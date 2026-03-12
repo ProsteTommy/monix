@@ -1,147 +1,102 @@
-:root {
-    --bg: #0b0b14;
-    --card-bg: #161625;
-    --accent: #8e44ad;
-    --accent-2: #3498db;
-    --text: #ffffff;
-    --gradient: linear-gradient(135deg, #8e44ad 0%, #3498db 100%);
-}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonix.lol | Minecraft Obchod</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
-}
+    <nav>
+        <div class="logo">MOONIX<span>.LOL</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Domů</a></li>
+            <li><a href="#store">VIP Obchod</a></li>
+            <li><a href="#passes">Gamepassy</a></li>
+            <li><a href="#" class="ip-copy" onclick="copyIP()">play.moonix.lol</a></li>
+        </ul>
+    </nav>
 
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-}
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Vítejte v <span class="gradient-text">Moonix Obchodě</span></h1>
+            <p>Rychlá a bezpečná platba přes PayPal.</p>
+        </div>
+    </header>
 
-.gradient-text {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-}
+    <section id="store" class="store-section">
+        <h2 class="section-title">VIP <span class="gradient-text">Ranky</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>MOON</h3>
+                <div class="price">59 Kč</div>
+                <ul>
+                    <li>Speciální Prefix [MOON]</li>
+                    <li>Kit Moon každých 24h</li>
+                    <li>Vstup na plný server</li>
+                </ul>
+                <button class="buy-btn" onclick="payWithPayPal(59)">Zakoupit přes PayPal</button>
+            </div>
 
-/* Navigace */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    background: rgba(11, 11, 20, 0.9);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
+            <div class="card featured">
+                <div class="badge">Nejoblíbenější</div>
+                <h3>GALAXY</h3>
+                <div class="price">159 Kč</div>
+                <ul>
+                    <li>Vše z ranku Moon</li>
+                    <li>Létání v Lobby (/fly)</li>
+                    <li>3x Home navíc</li>
+                </ul>
+                <button class="buy-btn" onclick="payWithPayPal(159)">Zakoupit přes PayPal</button>
+            </div>
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
+            <div class="card">
+                <h3>COSMOS</h3>
+                <div class="price">259 Kč</div>
+                <ul>
+                    <li>Vše z ranku Galaxy</li>
+                    <li>Vlastní hlava (/hat)</li>
+                    <li>Prioritní podpora</li>
+                </ul>
+                <button class="buy-btn" onclick="payWithPayPal(259)">Zakoupit přes PayPal</button>
+            </div>
+        </div>
+    </section>
 
-.logo span { color: var(--accent-2); }
+    <section id="passes" class="store-section alt-bg">
+        <h2 class="section-title">Herní <span class="gradient-text">Passy</span></h2>
+        <div class="grid single">
+            <div class="card pass-card">
+                <div class="pass-info">
+                    <h3>MOONIX<span>PASS</span></h3>
+                    <p>Odemkni prémiové odměny a XP boostery.</p>
+                    <div class="price">99 Kč</div>
+                </div>
+                <button class="buy-btn" onclick="payWithPayPal(99)">Aktivovat Pass</button>
+            </div>
+        </div>
+    </section>
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
+    <footer>
+        <p>&copy; 2026 Moonix.lol | Nejsme spojeni s Mojang AB.</p>
+    </footer>
 
-.nav-links li { margin-left: 30px; }
+    <script>
+        function payWithPayPal(amount) {
+            // TADY PŘEPIŠ TVŮJ PAYPAL NICK!
+            const paypalNick = "paypal.me/tomaspotesil"; 
+            const url = `https://www.paypal.com/paypalme/${paypalNick}/${amount}CZK`;
+            
+            window.open(url, '_blank');
+            alert("Otevírám PayPal pro platbu " + amount + " Kč. Po zaplacení pošli screen na náš Discord!");
+        }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.nav-links a:hover { color: var(--accent-2); }
-
-/* Hero Sekce */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at center, rgba(142, 68, 173, 0.15) 0%, var(--bg) 70%);
-}
-
-.hero h1 { font-size: 4rem; margin-bottom: 10px; }
-
-.btn {
-    padding: 12px 30px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    margin: 10px;
-    display: inline-block;
-    transition: 0.3s;
-}
-
-.primary { background: var(--gradient); color: white; }
-.secondary { border: 2px solid var(--accent-2); color: white; }
-.primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(142, 68, 173, 0.3); }
-
-/* Karty a Obchod */
-.store-section { padding: 100px 8%; }
-.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: 0.3s;
-    position: relative;
-}
-
-.card:hover { transform: translateY(-10px); border-color: var(--accent-2); }
-
-.featured { border: 2px solid var(--accent); background: rgba(142, 68, 173, 0.05); }
-
-.badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gradient);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.price { font-size: 2rem; font-weight: 800; margin: 20px 0; color: var(--accent-2); }
-
-.card ul { list-style: none; margin-bottom: 30px; text-align: left; }
-.card ul li { margin-bottom: 10px; opacity: 0.8; }
-.card ul li::before { content: "✓ "; color: var(--accent-2); }
-
-.buy-btn {
-    display: block;
-    background: #2ecc71;
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 10px;
-    font-weight: 700;
-}
-
-/* Footer */
-footer { text-align: center; padding: 50px; opacity: 0.5; font-size: 14px; }
+        function copyIP() {
+            navigator.clipboard.writeText("play.moonix.lol");
+            alert("IP adresa zkopírována!");
+        }
+    </script>
+</body>
+</html>
