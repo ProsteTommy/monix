@@ -15,14 +15,14 @@
             <li><a href="#home">Domů</a></li>
             <li><a href="#store">VIP Obchod</a></li>
             <li><a href="#passes">Gamepassy</a></li>
-            <li><a href="#" class="ip-copy">play.moonix.lol</a></li>
+            <li><a href="#" class="ip-copy" onclick="copyIP()">play.moonix.lol</a></li>
         </ul>
     </nav>
 
     <header id="home" class="hero">
         <div class="hero-content">
             <h1>Vítejte v <span class="gradient-text">Moonix Obchodě</span></h1>
-            <p>Podpoř server a získej exkluzivní výhody!</p>
+            <p>Rychlá a bezpečná platba přes PayPal.</p>
         </div>
     </header>
 
@@ -37,7 +37,7 @@
                     <li>Kit Moon každých 24h</li>
                     <li>Vstup na plný server</li>
                 </ul>
-                <a href="https://discord.gg/TVUJ_INVITE" class="buy-btn">Zakoupit</a>
+                <button class="buy-btn" onclick="payWithPayPal(59)">Zakoupit přes PayPal</button>
             </div>
 
             <div class="card featured">
@@ -49,7 +49,7 @@
                     <li>Létání v Lobby (/fly)</li>
                     <li>3x Home navíc</li>
                 </ul>
-                <a href="https://discord.gg/TVUJ_INVITE" class="buy-btn">Zakoupit</a>
+                <button class="buy-btn" onclick="payWithPayPal(159)">Zakoupit přes PayPal</button>
             </div>
 
             <div class="card">
@@ -60,7 +60,7 @@
                     <li>Vlastní hlava (/hat)</li>
                     <li>Prioritní podpora</li>
                 </ul>
-                <a href="https://discord.gg/TVUJ_INVITE" class="buy-btn">Zakoupit</a>
+                <button class="buy-btn" onclick="payWithPayPal(259)">Zakoupit přes PayPal</button>
             </div>
         </div>
     </section>
@@ -71,17 +71,36 @@
             <div class="card pass-card">
                 <div class="pass-info">
                     <h3>MOONIX<span>PASS</span></h3>
-                    <p>Odemkni prémiové odměny, klíče k bednám a XP boostery.</p>
-                    <div class="price">99 Kč / Sezóna</div>
+                    <p>Odemkni prémiové odměny a XP boostery.</p>
+                    <div class="price">99 Kč</div>
                 </div>
-                <a href="https://discord.gg/TVUJ_INVITE" class="buy-btn">Zakoupit Pass</a>
+                <button class="buy-btn" onclick="payWithPayPal(99)">Aktivovat Pass</button>
             </div>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Moonix.lol | Nejsme spojeni s Mojang AB.</p>
+        <p style="font-size: 11px; opacity: 0.4; margin-top: 10px;">Po zaplacení nás kontaktuj na Discordu pro aktivaci ranku.</p>
     </footer>
 
+    <script>
+        function payWithPayPal(amount) {
+            // TADY ZMĚŇ "TVUJ_PAYPAL_NICK" NA SVŮJ NICK Z PAYPAL.ME
+            const paypalNick = "TVUJ_PAYPAL_NICK"; 
+            const url = `https://www.paypal.com/paypalme/${paypalNick}/${amount}CZK`;
+            
+            // Otevře PayPal v novém okně
+            window.open(url, '_blank');
+            
+            // Upozornění pro hráče
+            alert("Byl jsi přesměrován na PayPal. Po dokončení platby pošli potvrzení (screenshot) na náš Discord!");
+        }
+
+        function copyIP() {
+            navigator.clipboard.writeText("play.moonix.lol");
+            alert("IP adresa zkopírována!");
+        }
+    </script>
 </body>
 </html>
